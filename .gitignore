@@ -1,6 +1,17 @@
 # Created by https://www.toptal.com/developers/gitignore/api/xcode,macos,swiftpackagemanager
 # Edit at https://www.toptal.com/developers/gitignore?templates=xcode,macos,swiftpackagemanager
 
+### Projects ###
+*.xcodeproj
+*.xcworkspace
+
+### Tuist derived files ###
+graph.dot
+Derived/
+
+### Tuist managed dependencies ###
+Tuist/.build
+
 ### macOS ###
 # General
 .DS_Store
@@ -40,7 +51,7 @@ Packages
 xcuserdata
 DerivedData/
 *.xcodeproj
-
+.package.resolved
 
 ### Xcode ###
 ## User settings
