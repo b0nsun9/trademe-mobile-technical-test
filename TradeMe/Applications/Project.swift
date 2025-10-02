@@ -9,7 +9,10 @@ enum Configuration {
 func getDependencies(_ config: Configuration) -> [TargetDependency] {
   
   let projects: [ModularPlugin.Project] = [
-
+    PresentationLayer.UIs.Discover,
+    PresentationLayer.UIs.Watchlist,
+    PresentationLayer.UIs.MyTradeMe,
+    PresentationLayer.ViewModels.Listings,
   ]
   
   return projects.map {

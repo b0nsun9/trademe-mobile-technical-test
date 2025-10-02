@@ -103,8 +103,10 @@ public struct DiscoverView<VM: ListingsViewModelProtocol>: View {
 			}
 			
 		})
-		.task {
-			await _viewModel.get()
+		.onAppear {
+			Task {
+				await _viewModel.get()
+			}
 		}
 		
 	}
