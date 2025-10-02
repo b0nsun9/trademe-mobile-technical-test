@@ -99,6 +99,7 @@ public final class TradeMe: @unchecked Sendable {
           "NSHumanReadableCopyright": .string("©2025 Bonsung Koo. All rights reserved."),
           "ITSAppUsesNonExemptEncryption": .boolean(false),
           "UISupportedInterfaceOrientations": .array([.string("UIInterfaceOrientationPortrait")]),
+          "UIUserInterfaceStyle": .string("Light")
         ]
       ),
       sources: ["App/Sources/**"],

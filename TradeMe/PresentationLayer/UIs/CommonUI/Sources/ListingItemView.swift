@@ -54,6 +54,7 @@ public struct ListingItemView: View {
 				ProgressView()
 					.frame(width: 100, height: 100)
 			}
+			.padding(.leading, 10)
 			
 			VStack(alignment: .leading, spacing: 0) {
 				

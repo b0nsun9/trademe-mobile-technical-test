@@ -62,6 +62,7 @@ func getInfoPlist(_ config: Configuration, appVersion: String) -> InfoPlist {
     "NSHumanReadableCopyright": .string("©2025 Bonsung Koo. All rights reserved."),
     "ITSAppUsesNonExemptEncryption": .boolean(false),
     "UISupportedInterfaceOrientations": .array([.string("UIInterfaceOrientationPortrait")]),
+    "UIUserInterfaceStyle": .string("Light")
   ]
   
   return .extendingDefault(with: infoPlist)
