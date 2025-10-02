@@ -2,16 +2,15 @@ import Foundation
 
 public enum PresentationLayer: Project {
   public enum ViewModels: Project {
-    case Discover
+    case Listings
   }
   
   public enum ViewModelProtocols: Project {
-    case Discover
+    case Listings
   }
   
   public enum UIs: Project {
     case CommonUI
-    case UIExtensions
     case Resources
     case Discover
   }
