@@ -14,6 +14,12 @@
 
 And that's all.
 
+## Development environment
+- Minimum deployments: iOS 16.4
+- Xcode 26.0.1
+- Swift 6
+- Tuist 4.80.0
+
 ## Project managing by Tuist.
 1. `tuist generate`
 - This command will generate `TradeMe.xcworkspace` file.
