@@ -20,6 +20,8 @@ let demo = tradeMe.demo(
   projects: [
     PresentationLayer.UIs.Discover,
     PresentationLayer.ViewModels.Listings,
+    DomainLayer.Entities.Listings,
+    DataLayer.Repositories.Listings,
   ]
 )
 

@@ -13,6 +13,8 @@ func getDependencies(_ config: Configuration) -> [TargetDependency] {
     PresentationLayer.UIs.Watchlist,
     PresentationLayer.UIs.MyTradeMe,
     PresentationLayer.ViewModels.Listings,
+    DomainLayer.Entities.Listings,
+    DataLayer.Repositories.Listings,
   ]
   
   return projects.map {

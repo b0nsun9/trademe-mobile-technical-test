@@ -36,6 +36,6 @@ public extension DomainLayer.EntityProtocols {
   }
   
   var path: String {
-    return "\(parent.path)/DomainLayer/EntitiyProtocols/\(name)"
+    return "\(parent.path)/DomainLayer/EntityProtocols/\(name)"
   }
 }

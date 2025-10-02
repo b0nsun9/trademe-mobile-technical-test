@@ -15,6 +15,10 @@ import Watchlist
 import MyTradeMe
 
 import ListingsViewModel
+import ListingsEntity
+import ListingsRepository
+
+import ListingsViewModel
 
 public struct TradeMeAppView: View {
 	
@@ -28,10 +32,14 @@ public struct TradeMeAppView: View {
 	
 	public var body: some View {
 		TabView {
-		
+			
 			NavigationStack {
 				DiscoverView(
-					viewModel: ListingsViewModel()
+					viewModel: ListingsViewModel(
+						entity: ListingEntity(
+							repository: ListingRepository()
+						)
+					)
 				)
 			}
 			.tabItem {
@@ -40,11 +48,12 @@ public struct TradeMeAppView: View {
 					Text("Discover")
 				} icon: {
 					R.image.search.image
+						.foregroundStyle(R.color.tasman500.color)
 				}
 				
 			}
 			.tag(Tab.discover)
-
+			
 			
 			NavigationStack {
 				WatchlistView()
@@ -55,6 +64,7 @@ public struct TradeMeAppView: View {
 					Text("Watchlist")
 				} icon: {
 					R.image.watchlist.image
+						.foregroundStyle(R.color.tasman500.color)
 				}
 				
 			}
@@ -69,6 +79,7 @@ public struct TradeMeAppView: View {
 					Text("My Trade Me")
 				} icon: {
 					R.image.profile16.image
+						.foregroundStyle(R.color.tasman500.color)
 				}
 				
 			}

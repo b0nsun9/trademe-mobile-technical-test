@@ -15,17 +15,17 @@ public struct ListingItemView: View {
 	public struct Model: Equatable, Sendable, Identifiable {
 		
 		public enum Price: Equatable, Sendable {
-			case auction(current: Double, buyNow: Double?)
-			case classified(asking: Double)
+			case auction(current: String, buyNow: String?)
+			case classified(asking: String)
 		}
 		
 		public let id: String
 		let location: String
 		let title: String
-		let imageUrl: URL
+		let imageUrl: URL?
 		let price: Price
 		
-		public init(id: String, location: String, title: String, imageUrl: URL, price: Price) {
+		public init(id: String, location: String, title: String, imageUrl: URL?, price: Price) {
 			self.id = id
 			self.location = location
 			self.title = title
@@ -74,10 +74,11 @@ public struct ListingItemView: View {
 				case .auction(let current, let buyNow):
 					
 					HStack(spacing: 0) {
+						
 						if let buyNow = buyNow {
 							
 							VStack(alignment: .leading) {
-								Text("$\(String(format: "%.2f", current))")
+								Text(current)
 									.foregroundStyle(R.color.bluffOyster800.color)
 									.fontWeight(.bold)
 									.font(.subheadline)
@@ -90,7 +91,7 @@ public struct ListingItemView: View {
 							Spacer()
 							
 							VStack(alignment: .trailing) {
-								Text("$\(String(format: "%.2f", buyNow))")
+								Text("$\(buyNow)")
 									.foregroundStyle(R.color.bluffOyster800.color)
 									.fontWeight(.bold)
 									.font(.subheadline)
@@ -102,10 +103,8 @@ public struct ListingItemView: View {
 							
 						} else {
 							
-							Spacer()
-							
 							VStack(alignment: .trailing) {
-								Text("$\(String(format: "%.2f", current))")
+								Text(current)
 									.foregroundStyle(R.color.bluffOyster800.color)
 									.fontWeight(.bold)
 									.font(.subheadline)
@@ -114,17 +113,18 @@ public struct ListingItemView: View {
 									.foregroundStyle(R.color.bluffOyster600.color)
 									.font(.caption)
 							}
+							
+							Spacer()
+							
 						}
 					}
-					
-					
 					
 				case .classified(let asking):
 					HStack(spacing: 0) {
 						Spacer()
 						
 						VStack(alignment: .trailing) {
-							Text("$\(String(format: "%.2f", asking))")
+							Text(asking)
 								.foregroundStyle(R.color.bluffOyster800.color)
 								.fontWeight(.bold)
 								.font(.subheadline)
@@ -138,34 +138,6 @@ public struct ListingItemView: View {
 				
 			}
 			.padding(.horizontal, 10)
-		}
-	}
-}
-
-
-#Preview {
-	ScrollView {
-		
-		VStack {
-			ListingItemView(
-				model: .init(
-					id: "RandomID",
-					location: "Auckland",
-					title: "iPhone 15 Pro Max 256GB",
-					imageUrl: URL(string: "https://www.apple.com/v/iphone-17-pro/b/images/overview/contrast/iphone_17_pro__dwccrdina7qu_large_2x.jpg")!,
-					price: .auction(current: 2000, buyNow: 2300)
-				)
-			)
-			
-			ListingItemView(
-				model: .init(
-					id: "RandomID",
-					location: "Auckland",
-					title: "iPhone 15 Pro Max 256GB",
-					imageUrl: URL(string: "https://www.apple.com/v/iphone-17-pro/b/images/overview/contrast/iphone_17_pro__dwccrdina7qu_large_2x.jpg")!,
-					price: .classified(asking: 1900)
-				)
-			)
 		}
 	}
 }
