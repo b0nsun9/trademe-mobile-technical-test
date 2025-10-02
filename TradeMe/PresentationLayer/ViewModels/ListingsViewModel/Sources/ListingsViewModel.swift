@@ -9,32 +9,45 @@
 import Foundation
 
 import ListingsViewModelProtocol
+import ListingsEntityProtocol
 
-public final class ListingsViewModel: ListingsViewModelProtocol {
+public final class ListingsViewModel<Entity: ListingsEntityProtocol>: ListingsViewModelProtocol {
+	
+	private let _entity: Entity
 	
 	@Published public var listingItems: [ListingsItemModel] = [ListingsItemModel]()
 	
-	public init() {
-		
+	public init(entity: Entity) {
+		_entity = entity
 	}
 	
 	public func get() async {
-		listingItems.append(contentsOf: [
-			ListingsItemModel(
-				id: UUID().uuidString,
-				location: "Auckland",
-				title: "iPhone 15 Pro Max 256GB",
-				imageUrl: URL(string: "https://www.apple.com/v/iphone-17-pro/b/images/overview/contrast/iphone_17_pro__dwccrdina7qu_large_2x.jpg")!,
-				price: .auction(current: 2000, buyNow: 2300)
-			),
-			ListingsItemModel(
-				id: UUID().uuidString,
-				location: "Auckland",
-				title: "iPhone 15 Pro Max 256GB",
-				imageUrl: URL(string: "https://www.apple.com/v/iphone-17-pro/b/images/overview/contrast/iphone_17_pro__dwccrdina7qu_large_2x.jpg")!,
-				price: .auction(current: 2000, buyNow: 2300)
-			)
-		])
+		let items = await _entity.getItems()
 		
+		listingItems = mapData(entities: items)
+	}
+	
+	private func convertPrice(_ price: Entity.Entity.Price) -> ListingsItemModel.Price {
+		switch price {
+		case .auction(let current, let buyNow):
+			return .auction(current: current, buyNow: buyNow)
+		case .classified(let asking):
+			return .classified(asking: asking)
+		}
+	}
+	
+	private func mapData(entities: [Entity.Entity]) -> [ListingsItemModel] {
+		return entities.map { entity in
+			
+			let price = convertPrice(entity.price)
+			
+			return .init(
+				id: entity.id,
+				location: entity.location,
+				title: entity.title,
+				imageUrl: entity.imageUrl,
+				price: price
+			)
+		}
 	}
 }

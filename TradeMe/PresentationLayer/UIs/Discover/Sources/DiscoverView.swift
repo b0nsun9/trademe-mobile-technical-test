@@ -33,7 +33,7 @@ public struct DiscoverView<VM: ListingsViewModelProtocol>: View {
 		__viewModel = StateObject(wrappedValue: viewModel)
 	}
 	
-	private func convertPrice(_ price: Price) -> ListingItemView.Model.Price {
+	private func convertPrice(_ price: ListingsItemModel.Price) -> ListingItemView.Model.Price {
 		switch price {
 		case .auction(let current, let buyNow):
 			return .auction(current: current, buyNow: buyNow)
@@ -80,6 +80,7 @@ public struct DiscoverView<VM: ListingsViewModelProtocol>: View {
 					_alert = .search
 				} label: {
 					R.image.search.image
+						.foregroundStyle(R.color.tasman500.color)
 				}
 			}
 			
@@ -88,6 +89,7 @@ public struct DiscoverView<VM: ListingsViewModelProtocol>: View {
 					_alert = .cart
 				} label: {
 					R.image.cart.image
+						.foregroundStyle(R.color.tasman500.color)
 				}
 			}
 		}

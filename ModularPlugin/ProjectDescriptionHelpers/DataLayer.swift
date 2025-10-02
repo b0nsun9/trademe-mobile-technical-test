@@ -29,7 +29,7 @@ public extension DataLayer.Repositories {
   }
   
   var path: String {
-    return "\(parent.path)/DataLayer/Repository/\(name)"
+    return "\(parent.path)/DataLayer/Repositories/\(name)"
   }
   
 }

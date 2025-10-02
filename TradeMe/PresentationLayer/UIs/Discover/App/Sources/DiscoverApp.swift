@@ -11,13 +11,15 @@ import SwiftUI
 
 import Discover
 import ListingsViewModel
+import ListingsEntity
+import ListingsRepository
 
 @main
 struct DiscoverApp: App {
 	var body: some Scene {
 		WindowGroup {
 			NavigationStack {
-				DiscoverView(viewModel: ListingsViewModel())
+				DiscoverView(viewModel: ListingsViewModel(entity: ListingEntity(repository: ListingRepository())))
 			}
 		}
 	}

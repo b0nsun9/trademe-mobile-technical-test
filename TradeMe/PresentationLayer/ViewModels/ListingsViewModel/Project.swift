@@ -8,7 +8,7 @@ let target = tradeMe.target(
   projects:
     [
       PresentationLayer.ViewModelProtocols.Listings,
-      
+      DomainLayer.EntityProtocols.Listings,
     ]
 )
 
