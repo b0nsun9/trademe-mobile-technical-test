@@ -13,6 +13,8 @@ public enum PresentationLayer: Project {
     case CommonUI
     case Resources
     case Discover
+    case Watchlist
+    case MyTradeMe
   }
 }
 
