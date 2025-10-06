@@ -34,6 +34,8 @@ And that's all.
 - This command will generate a dependency graph.
 - You can also use options, similar to the `tuist generate` examples.
 
+> **Note:** You need to add your API key and secret in `ListingRepository` to use the Trade Me API.
+
 ## Comments
 Kia ora Trade Me tream,
 

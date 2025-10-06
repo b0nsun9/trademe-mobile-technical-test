@@ -20,10 +20,16 @@ public struct ListingRepository: ListingRepositoryProtocol {
 	
 	public func get() async -> ListingsItemDTO? {
 		
+		// OAuth Consumer Key: Obtained from Trade Me Developer portal (https://developer.trademe.co.nz/)
+		let key = ""
+		
+		// OAuth Consumer Secret: Obtained from Trade Me Developer portal along with the Consumer Key
+		let secret = ""
+		
 		var httpHeaders: HTTPHeaders = [:]
 		httpHeaders.add(.accept("application/json"))
 		httpHeaders.add(.contentType("application/x-www-form-urlencoded"))
-		httpHeaders.add(.authorization("OAuth oauth_consumer_key=A1AC63F0332A131A78FAC304D007E7D1,oauth_signature_method=PLAINTEXT,oauth_signature=EC7F18B17A062962C6930A8AE88B16C7&"))
+		httpHeaders.add(.authorization("OAuth oauth_consumer_key=\(key),oauth_signature_method=PLAINTEXT,oauth_signature=\(secret)&"))
 		
 		let request = AF.request(
 			"https://api.tmsandbox.co.nz/v1/listings/latest.json",
